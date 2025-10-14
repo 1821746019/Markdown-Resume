@@ -1,62 +1,75 @@
- <center>
-     <h1>XXX</h1>
-     <div>
-         <span>
-             <img src="assets/phone-solid.svg" width="18px">
-             180XXXXXXXX
-         </span>
-         ·
-         <span>
-             <img src="assets/envelope-solid.svg" width="18px">
-             zhengyc101@163.com
-         </span>
-         ·
-         <span>
-             <img src="assets/github-brands.svg" width="18px">
-             <a href="https://github.com/CyC2018">CyC2018</a>
-         </span>
-         ·
-         <span>
-             <img src="assets/rss-solid.svg" width="18px">
-             <a href="#">My Blog</a>
-         </span>
-     </div>
- </center>
+<div style="
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  align-items: center;
+  column-gap: 20px;
+  width: 100%;
+  font-family: 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+">
+  <img src="assets/我的照片-四六级.jpg" width="90" style="border-radius: 10px;">
+  <div>
+    <h2 style="margin: 0;">王勇顺</h2>
+    <div style="line-height: 1.6;">
+      出生日期：2004-11-13<br>
+      性别：男
+    </div>
+  </div>
+  <div style="text-align: left; line-height: 1.6;">
+    联系方式：+86 17322974044<br>
+    邮箱：1821746019@qq.com<br>
+    意向工作城市：深圳
+  </div>
+</div>
 
- ## <img src="assets/info-circle-solid.svg" width="30px"> 个人信息 
+#### <img src="assets/graduation-cap-solid.svg" style="width:1.618rem"> 教育经历
 
- - 男，1994 年出生
- - 求职意向：Java 研发工程师
- - 工作经验：0 年（校招可不填）
- - 期望薪资：0k（校招可不填）
+- 数据科学与大数据技术，深圳技术大学(一本)，2022.9–2026.7（预计）
+- 语言：大学英语四级、六级通过，读写是强项，能够独立阅读英文技术文档、学术论文
+- 荣誉和认证：蓝桥杯省级程序设计竞赛二等奖、阿里云Apsara Clouder认证
 
-## <img src="assets/graduation-cap-solid.svg" width="30px"> 教育经历
+#### <img src="assets/project-diagram-solid.svg" style="width:1.618rem"> 项目经历
 
-- 硕士，XXXX大学，计算机科学与技术专业，2016.9~2019.7
-- 学士，XXXX大学，软件工程专业，2012.9~2016.7
-- 绩点：***，年级前 100%
-- 通过了 CET4/6 英语等级考试
+- **多人在线排课系统**｜组长、测试和运维：专为老师定制的拖放式排课系统
 
-## <img src="assets/briefcase-solid.svg" width="30px"> 工作经历
+  **Go、MySQL、Vue、Linux、Apifox**
 
-- **XXXX 公司，XXXX 部门，XXXX 工程师，2010.1~2010.9**
+  - **介绍**：传统的纸质课表依赖物理媒介、电子课表虽解决了该问题，但难协同、效率低的问题依旧存在。此系统旨在将传统的线下排课流程数字化、网络化，通过技术手段提升排课工作的效率。
+  - **主要职责**：作为项目的主心骨，跨前后端协作，并对API接口进行测试，将项目部署上云
+    - **跨前后端**：为前端同学讲解数据模型，帮助其理解业务逻辑以及API的使用；协助后端完成空指针解引用、漏传classID关键参数导致的编译错误、cell被关联到错误班级、中间件使用顺序不当导致跨域请求被拒等bug修复。
+    - **API测试与修复**：发现并通知后端解决多个安全问题、字段冗余、字段命名风格不一致，保证了API的质量和可靠性。如：API未验证用户权限、已注销用户依然可以访问其资源。
+    - **服务器性能瓶颈排查与解决**：项目初期频繁出现卡顿甚至无法响应SSH连接。我使用htop对CPU和内存使用情况进行实时监控分析，发现是Go后端程序启动后耗尽了服务器的RAM。通过创建swapfile并启用虚拟内存，彻底解决了因内存不足导致的服务器卡死和服务崩溃问题
+    - **服务器稳定性排查与优化**：后端服务不定期地掉线且相关日志文件消失，通过检查系统重启记录和深入分析系统日志，仔细追踪服务停止的时间点及前后的系统事件。确认问题是云服务提供商为维护系统安全，定期自动执行“安全补丁”更新，强制重启了服务器实例。我将安全更新策略从“自动”调整为“手动触发”。这样，运维团队可以在可控的时间窗口（如维护时段）手动触发更新和重启，避免了服务在业务高峰期或未知时间被意外中断，保障了服务的计划性和稳定性。
+    - **域名与安全配置**：我负责为后端 API 服务申请并配置了独立的二级域名,为域名申请并部署了有效的 SSL/TLS 证书, 确保所有前后端之间的 API 通信都经过 HTTPS 加密，有效防止了数据在传输过程中被窃听或篡改，满足了基本的安全合规要求
+    - **持续集成与部署 (CI/CD) 实践**：为了提升代码变更后的部署效率和减少人工操作失误，我设计并实现了一个简易但有效的持续部署流程。具体做法是编写了自动化 Shell 脚本（deploy.sh），该脚本能自动完成拉取指定分支最新代码、编译 Go 项目生成可执行文件、停止旧服务进程、启动新服务进程等步骤。随后，我在项目 Github 仓库中配置了 Webhook，将其指向服务器上接收 Webhook 请求并执行上述部署脚本的监听服务
 
-   负责 XXX
+- **TradingEnv**｜独立开发：量化回测与策略研发系统
 
-## <img src="assets/project-diagram-solid.svg" width="30px"> 项目经历
+  **Python、PostgreSQL、Redis、pandas、numpy、matplotlib/seaborn**
 
-- **XXXX 项目**
+  - 构建期货/加密货币/外汇/指数回测与研究环境，支持多tickers多频OHLCV加载与事件驱动撮合。
+  - 支持策略研发流水线与指标可视化；实现 PremiumIndex、VWAP、CVD 背离（在研）、AI agent 等策略框架。
+  - 使用redis以及合适的同步机制，避免了缓存击穿和惊群效应
+  - 拥有健全的异常处理与日志追踪便于排查问题。
+  - 高性能：经过优化，SPS从一开始的1000提升到了10000；简化缓存有效性验证逻辑，将2020-2024年间1m级别共2M+行数据的获取时间从23s降到了1s
 
-  *使用到的技术*
+- **SISS is Not a Sandbox**｜独立开发：便携化与软件管控工具，但不像沙盒那样创造强隔离的环境
 
-  使用一两句话描述项目的主要功能，然后介绍自己在项目中的角色，解决了什么问题，使用什么方式解决，比别人的方法相比有什么优势（尽量用数据来说明）。
+  **C++、CMake、vcpkg、Hook**
 
-## <img src="assets/tools-solid.svg" width="30px"> 技能清单
+  - **软件+数据一键迁移新电脑**：对特定文件/注册表路径进行重定向，实现软件便携化。
+  - **一定程度管控软件，保护隐私安全。**：拦截特定路径访问，阻止开机自启、自更新、扫盘、敏感数据读取(如 QQ 读取浏览器历史)
 
-- ★★★ Java
-- ★★☆ C++、Python
-- ★★★ MySQL
-- ★★★ Redis
-- ★★☆ Spring
-- ★☆☆ RabbitMQ、ZooKeeper
-- ★★☆ JavaScript
+#### <img src="assets/tools-solid.svg" style="width:1.618rem"> 技能清单
+
+- 编程语言或框架：Python、C++
+- 数据处理与可视化：NumPy、Pandas、Matplotlib/Seaborn
+- 数据库与缓存：PostgreSQL、Redis
+- 回测与策略研发：事件驱动回测、指标开发、可视化与日志追踪
+- 工程实践：CMake、vcpkg、Git、Docker；独立完成中小型工程并提供清晰的代码注释
+- 性能瓶颈分析与解决：熟练使用性能分析工具(如line_profile、pyinstrument)，定位热点代码进行细致优化，显著提高代码执行效率
+- 高并发和异步：能够编写多线程/进程代码，利用多核CPU避免GIL的限制。能够使用异步来解决IO密集型任务，避免阻塞。
+
+
+###  其它经历
+- 《大数据原理》课程助教：该课程实验课难度较大，有众多新颖的工具和名词，同学们易感到困惑、在实验中卡壳、因迟迟找不到解决办法而丧失积极性。我的职责是确保同学们能够理解新工具和命令的使用，在实验课上我积极为同学们答疑解惑。最终确保了每位同学都能按时提交作业，得到了老师的认可。
